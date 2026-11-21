@@ -1,0 +1,239 @@
+{
+ "variants": [
+  {
+   "name": "Gatekeeper III",
+   "idea": "Exit truck D drops only after truck H slides left, and H's path is now blocked by car K, which needs car E out of the way first.",
+   "vehicles": [
+    {
+     "id": "R",
+     "x": 1,
+     "y": 2,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "A",
+     "x": 0,
+     "y": 0,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "B",
+     "x": 3,
+     "y": 0,
+     "length": 3,
+     "orientation": "V"
+    },
+    {
+     "id": "C",
+     "x": 0,
+     "y": 1,
+     "length": 2,
+     "orientation": "V"
+    },
+    {
+     "id": "D",
+     "x": 5,
+     "y": 1,
+     "length": 3,
+     "orientation": "V"
+    },
+    {
+     "id": "E",
+     "x": 0,
+     "y": 3,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "F",
+     "x": 2,
+     "y": 3,
+     "length": 2,
+     "orientation": "V"
+    },
+    {
+     "id": "H",
+     "x": 3,
+     "y": 4,
+     "length": 3,
+     "orientation": "H"
+    },
+    {
+     "id": "J",
+     "x": 4,
+     "y": 5,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "K",
+     "x": 1,
+     "y": 4,
+     "length": 2,
+     "orientation": "V"
+    }
+   ]
+  },
+  {
+   "name": "Gatekeeper IIIb",
+   "idea": "Gatekeeper II with A shrunk to a car and car M parked top-right, so truck B can only go down and the red car has to back up.",
+   "vehicles": [
+    {
+     "id": "R",
+     "x": 1,
+     "y": 2,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "A",
+     "x": 0,
+     "y": 0,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "B",
+     "x": 3,
+     "y": 0,
+     "length": 3,
+     "orientation": "V"
+    },
+    {
+     "id": "C",
+     "x": 0,
+     "y": 1,
+     "length": 2,
+     "orientation": "V"
+    },
+    {
+     "id": "D",
+     "x": 5,
+     "y": 1,
+     "length": 3,
+     "orientation": "V"
+    },
+    {
+     "id": "E",
+     "x": 0,
+     "y": 3,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "F",
+     "x": 2,
+     "y": 3,
+     "length": 2,
+     "orientation": "V"
+    },
+    {
+     "id": "H",
+     "x": 3,
+     "y": 4,
+     "length": 3,
+     "orientation": "H"
+    },
+    {
+     "id": "J",
+     "x": 4,
+     "y": 5,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "M",
+     "x": 4,
+     "y": 0,
+     "length": 2,
+     "orientation": "H"
+    }
+   ]
+  },
+  {
+   "name": "Gatekeeper IIIc",
+   "idea": "Both changes: K blocks truck H's route and M boxes in the top-right corner.",
+   "vehicles": [
+    {
+     "id": "R",
+     "x": 1,
+     "y": 2,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "A",
+     "x": 0,
+     "y": 0,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "B",
+     "x": 3,
+     "y": 0,
+     "length": 3,
+     "orientation": "V"
+    },
+    {
+     "id": "C",
+     "x": 0,
+     "y": 1,
+     "length": 2,
+     "orientation": "V"
+    },
+    {
+     "id": "D",
+     "x": 5,
+     "y": 1,
+     "length": 3,
+     "orientation": "V"
+    },
+    {
+     "id": "E",
+     "x": 0,
+     "y": 3,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "F",
+     "x": 2,
+     "y": 3,
+     "length": 2,
+     "orientation": "V"
+    },
+    {
+     "id": "H",
+     "x": 3,
+     "y": 4,
+     "length": 3,
+     "orientation": "H"
+    },
+    {
+     "id": "J",
+     "x": 4,
+     "y": 5,
+     "length": 2,
+     "orientation": "H"
+    },
+    {
+     "id": "K",
+     "x": 1,
+     "y": 4,
+     "length": 2,
+     "orientation": "V"
+    },
+    {
+     "id": "M",
+     "x": 4,
+     "y": 0,
+     "length": 2,
+     "orientation": "H"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+Solver report on your variants:
+
+## Gatekeeper III: REJECTED
+AA.B..
+C..B.D
+CRRB.D  <- exit
+EEF..D
+.KFHHH
+.K..JJ
+- unsolvable: the red car can never reach the exit
+
+## Gatekeeper IIIb: ACCEPTED
+AA.BMM
+C..B.D
+CRRB.D  <- exit
+EEF..D
+..FHHH
+....JJ
+min_moves=13 difficulty=6.1 blockers=7 dead_end_ratio=0.36 states=6582
+optimal line: F down 1 E right 3 C down 2 R left 1 F up 4 R right 1 C up 1 E left 2 H left 3 J left 3 B down 3 D down 2 R right 3
+
+## Gatekeeper IIIc: REJECTED
+AA.BMM
+C..B.D
+CRRB.D  <- exit
+EEF..D
+.KFHHH
+.K..JJ
+- unsolvable: the red car can never reach the exit
+
+Return corrected or replacement layouts ONLY for the rejected variants. If a level was too short, add a dependency chain (block the blockers); if too long, free one vehicle.

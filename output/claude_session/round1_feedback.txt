@@ -1,0 +1,35 @@
+Solver report on your variants:
+
+## Gatekeeper: REJECTED
+AAAB..
+C..B.D
+CRRB.D  <- exit
+EEF..D
+G.FHHH
+GII.JJ
+- unsolvable: the red car can never reach the exit
+
+## Two Gates: REJECTED
+AA..CC
+DDEB.F
+RREB.F  <- exit
+GG.H.F
+I..HJJ
+IKKK..
+min_moves=7 difficulty=5.85 blockers=5 dead_end_ratio=0.529 states=9539
+optimal line: E up 1 B up 1 H up 1 J left 3 F down 2 H down 1 R right 4
+- optimal solution is 7 moves, target is 12-18
+
+## Truck Wall: REJECTED
+AAB.D.
+CCB.D.
+RR..DF  <- exit
+G.HHHF
+GII..F
+JJ.KK.
+min_moves=5 difficulty=4.98 blockers=4 dead_end_ratio=0.491 states=14645
+optimal line: F down 1 H left 1 K left 1 D down 3 R right 4
+- optimal solution is 5 moves, target is 12-18
+- difficulty score 4.98 outside 5.5-7.2
+
+Return corrected or replacement layouts ONLY for the rejected variants. If a level was too short, add a dependency chain (block the blockers); if too long, free one vehicle.

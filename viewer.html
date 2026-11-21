@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jam Lab Viewer</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f4f3ef; --surface: #fcfcfb; --surface-2: #efeee9; --line: #dcdbd5;
+  --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #85847f;
+  --accent: #2a78d6; --accent-soft: #dbe8f8;
+  --board: #3a3d44; --cell: #4a4e57; --cell-line: #353840;
+  --red: #e0383e; --red-ink: #fff;
+  --car: #f2c14e; --truck: #6aa8e8; --veh-ink: #1d1d1d;
+  --good: #1a8a3a; --warn: #b26a00; --bad: #c0392b;
+  --target: #8b8a85;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121211; --surface: #1a1a19; --surface-2: #232321; --line: #34332f;
+    --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e86;
+    --accent: #3987e5; --accent-soft: #1e2f45;
+    --board: #2a2c31; --cell: #363940; --cell-line: #26282c;
+    --good: #3cc364; --warn: #e3a33a; --bad: #ec6a5c; --target: #77766f;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121211; --surface: #1a1a19; --surface-2: #232321; --line: #34332f;
+  --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e86;
+  --accent: #3987e5; --accent-soft: #1e2f45;
+  --board: #2a2c31; --cell: #363940; --cell-line: #26282c;
+  --good: #3cc364; --warn: #e3a33a; --bad: #ec6a5c; --target: #77766f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line);
+  background: var(--surface); flex-wrap: wrap; }
+header h1 { font-size: 16px; margin: 0; letter-spacing: .2px; }
+header .pack { color: var(--ink-2); font-size: 13px; }
+header .spacer { flex: 1; }
+button, .btn { font: inherit; font-size: 13px; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+button:hover, .btn:hover { border-color: var(--ink-3); }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button:disabled { opacity: .45; cursor: default; }
+main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 340px; gap: 16px; padding: 16px; max-width: 1400px; margin: 0 auto; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; min-width: 0; }
+.panel h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--ink-3); margin: 0 0 10px; font-weight: 600; }
+#levels { list-style: none; margin: 0; padding: 0; max-height: calc(100vh - 140px); overflow: auto; }
+#levels li { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 8px; padding: 7px 8px;
+  border-radius: 8px; cursor: pointer; }
+#levels li:hover { background: var(--surface-2); }
+#levels li.active { background: var(--accent-soft); }
+#levels .num { color: var(--ink-3); font-variant-numeric: tabular-nums; font-size: 12px; }
+#levels .nm { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#levels .nm small { display: block; color: var(--ink-3); font-size: 11px; }
+.chip { font-size: 11px; font-variant-numeric: tabular-nums; border-radius: 999px; padding: 1px 8px; background: var(--surface-2); color: var(--ink-2); }
+.done { color: var(--good); font-size: 12px; }
+.center { display: flex; flex-direction: column; gap: 14px; align-items: stretch; }
+.titlebar { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.titlebar h2 { margin: 0; font-size: 20px; text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 650; }
+.titlebar .meta { color: var(--ink-2); font-size: 13px; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); }
+.tag.breather { border-color: var(--good); color: var(--good); }
+.tag.peak { border-color: var(--warn); color: var(--warn); }
+.boardwrap { display: flex; justify-content: center; }
+#board { position: relative; width: min(100%, 460px); aspect-ratio: 1 / 1; background: var(--board); border-radius: 14px;
+  padding: 3%; touch-action: none; user-select: none; -webkit-user-select: none; }
+#cells { position: absolute; inset: 3%; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(6, 1fr); gap: 0; }
+#cells div { border: 1px solid var(--cell-line); background: var(--cell); }
+#exit { position: absolute; right: -10px; width: 14px; border-radius: 0 6px 6px 0; background: var(--red); opacity: .85; }
+#vehicles { position: absolute; inset: 3%; }
+.veh { position: absolute; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: clamp(12px, 2.4vw, 18px); color: var(--veh-ink); cursor: grab; touch-action: none;
+  transition: left .28s ease, top .28s ease, opacity .3s; box-shadow: inset 0 -4px 0 rgba(0,0,0,.18), 0 2px 4px rgba(0,0,0,.25); }
+.veh.drag { transition: none; cursor: grabbing; z-index: 5; box-shadow: 0 6px 14px rgba(0,0,0,.35); }
+.veh.car { background: var(--car); }
+.veh.truck { background: var(--truck); }
+.veh.red { background: var(--red); color: var(--red-ink); }
+.veh.escaped { opacity: 0; }
+.controls { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; align-items: center; }
+.counter { font-variant-numeric: tabular-nums; color: var(--ink-2); min-width: 150px; text-align: center; }
+.counter b { color: var(--ink); }
+#toast { text-align: center; min-height: 22px; font-weight: 600; color: var(--good); }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.stat { background: var(--surface-2); border-radius: 10px; padding: 8px 10px; }
+.stat .k { font-size: 11px; color: var(--ink-3); }
+.stat .v { font-size: 18px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.stat .v small { font-size: 12px; color: var(--ink-3); font-weight: 400; }
+.bar { height: 6px; background: var(--line); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.right { display: flex; flex-direction: column; gap: 16px; }
+.note p { margin: 0 0 10px; color: var(--ink-2); }
+.note b { color: var(--ink); display: block; font-size: 12px; margin-bottom: 2px; }
+#curve { width: 100%; height: auto; display: block; }
+#curve .pt { cursor: pointer; }
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--surface); font-size: 12px; padding: 6px 8px;
+  border-radius: 6px; opacity: 0; transition: opacity .1s; z-index: 20; white-space: nowrap; }
+.legend { display: flex; gap: 14px; font-size: 11px; color: var(--ink-2); margin-top: 4px; }
+.legend span::before { content: ""; display: inline-block; width: 14px; height: 0; border-top: 2px solid var(--accent); vertical-align: middle; margin-right: 5px; }
+.legend span.t::before { border-top: 2px dashed var(--target); }
+#drop { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: none; align-items: center; justify-content: center; color: #fff; font-size: 20px; z-index: 30; }
+#empty { padding: 40px 16px; text-align: center; color: var(--ink-2); grid-column: 1 / -1; }
+#empty code { background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
+.solution { font-family: ui-monospace, Consolas, monospace; font-size: 12px; color: var(--ink-2); word-break: break-word; }
+.solution .cur { color: var(--accent); font-weight: 700; }
+@media (max-width: 1100px) { main { grid-template-columns: 1fr; } #levels { max-height: 220px; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Jam Lab</h1>
+  <span class="pack" id="packName">no pack loaded</span>
+  <span class="spacer"></span>
+  <label class="btn">Load pack JSON<input type="file" id="file" accept=".json,application/json" hidden></label>
+  <button id="themeBtn" title="Toggle light/dark">◐</button>
+</header>
+<main id="app">
+  <div id="empty">Loading… If nothing appears, run <code>python jamlab.py view</code> or drop a pack JSON (e.g. <code>output/pack.json</code>) onto this page.</div>
+</main>
+<div id="drop">Drop a pack JSON to load it</div>
+<div id="tip"></div>
+
+<script>
+"use strict";
+const $ = (s, el = document) => el.querySelector(s);
+const params = new URLSearchParams(location.search);
+const state = { pack: null, idx: 0, pos: {}, moves: 0, history: [], won: false, anim: null, step: 0, solved: new Set() };
+
+/* ---------------- loading ---------------- */
+async function boot() {
+  const theme = params.get("theme");
+  if (theme) document.documentElement.dataset.theme = theme;
+  const src = params.get("pack") || "output/pack.json";
+  try {
+    const r = await fetch(src);
+    if (!r.ok) throw new Error(r.status);
+    loadPack(await r.json(), src);
+  } catch (e) {
+    $("#empty").innerHTML = `Couldn't fetch <code>${src}</code>. Click <b>Load pack JSON</b>, drop a file here, or serve the folder with <code>python jamlab.py view</code>.`;
+  }
+}
+function loadPack(pack, label) {
+  if (!pack.levels) { pack = { name: pack.name || "Single level", levels: [{ index: 1, name: pack.name || "Level", level: pack }] }; }
+  state.pack = pack;
+  $("#packName").textContent = `${pack.name || "Pack"} · ${pack.levels.length} levels` + (label ? ` · ${label}` : "");
+  buildLayout();
+  const start = Math.min(pack.levels.length, Math.max(1, +params.get("level") || 1)) - 1;
+  select(start);
+  const step = +params.get("step");
+  if (step) { for (let i = 0; i < step; i++) stepSolution(true); }
+  if (params.get("play") === "1") playSolution();
+}
+$("#file").addEventListener("change", async e => {
+  const f = e.target.files[0]; if (f) loadPack(JSON.parse(await f.text()), f.name);
+});
+addEventListener("dragover", e => { e.preventDefault(); $("#drop").style.display = "flex"; });
+addEventListener("dragleave", e => { if (e.target === $("#drop")) $("#drop").style.display = "none"; });
+addEventListener("drop", async e => {
+  e.preventDefault(); $("#drop").style.display = "none";
+  const f = e.dataTransfer.files[0]; if (f) loadPack(JSON.parse(await f.text()), f.name);
+});
+$("#themeBtn").onclick = () => {
+  const dark = matchMedia("(prefers-color-scheme: dark)").matches;
+  const cur = document.documentElement.dataset.theme || (dark ? "dark" : "light");
+  document.documentElement.dataset.theme = cur === "dark" ? "light" : "dark";
+  drawCurve();
+};
+
+/* ---------------- layout ---------------- */
+function buildLayout() {
+  $("#app").innerHTML = `
+  <aside class="panel"><h2>Levels</h2><ul id="levels"></ul></aside>
+  <section class="center">
+    <div class="panel">
+      <div class="titlebar"><h2 id="title"></h2><span class="meta" id="sub"></span></div>
+    </div>
+    <div class="panel">
+      <div class="boardwrap"><div id="board"><div id="cells"></div><div id="exit"></div><div id="vehicles"></div></div></div>
+      <div id="toast"></div>
+      <div class="controls">
+        <button id="undo">Undo</button><button id="reset">Reset</button>
+        <span class="counter" id="counter"></span>
+        <button id="stepBtn">Step</button><button id="playBtn" class="primary">▶ Show solution</button>
+      </div>
+      <div class="solution" id="solution" style="margin-top:10px;text-align:center"></div>
+    </div>
+    <div class="panel note"><h2>Designer's note</h2><div id="note"></div></div>
+  </section>
+  <aside class="right">
+    <div class="panel"><h2>Difficulty curve</h2><svg id="curve" viewBox="0 0 320 150" role="img" aria-label="Difficulty per level"></svg>
+      <div class="legend"><span>Measured</span><span class="t">Target</span></div></div>
+    <div class="panel"><h2>Metrics</h2><div class="stats" id="metrics"></div></div>
+    <div class="panel"><h2>Simulated playtest</h2><div class="stats" id="playtest"></div></div>
+  </aside>`;
+  const ul = $("#levels");
+  state.pack.levels.forEach((e, i) => {
+    const li = document.createElement("li");
+    const d = e.metrics ? e.metrics.difficulty.toFixed(1) : "–";
+    li.innerHTML = `<span class="num">${e.index ?? i + 1}</span><span class="nm">${esc(shortName(e))}<small>${esc(e.role || e.source || "")}</small></span><span class="chip">${d}</span>`;
+    li.onclick = () => select(i);
+    ul.appendChild(li);
+  });
+  const cells = $("#cells");
+  for (let i = 0; i < 36; i++) cells.appendChild(document.createElement("div"));
+  $("#undo").onclick = undo; $("#reset").onclick = () => select(state.idx);
+  $("#stepBtn").onclick = () => { stopAnim(); stepSolution(false); };
+  $("#playBtn").onclick = () => state.anim ? stopAnim() : playSolution();
+  addEventListener("keydown", e => {
+    if (e.key === "ArrowDown" || e.key === "j") select(Math.min(state.idx + 1, state.pack.levels.length - 1));
+    if (e.key === "ArrowUp" || e.key === "k") select(Math.max(state.idx - 1, 0));
+    if ((e.ctrlKey || e.metaKey) && e.key === "z") undo();
+  });
+  addEventListener("resize", render);
+}
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const shortName = e => (e.name || "").replace(/^\d+\s*·\s*/, "");
+const cur = () => state.pack.levels[state.idx];
+const lvl = () => cur().level;
+const W = () => (lvl().grid || {}).width || 6;
+const H = () => (lvl().grid || {}).height || 6;
+const exitRow = () => (lvl().exit || {}).row ?? 2;
+
+/* ---------------- select / render ---------------- */
+function select(i) {
+  stopAnim();
+  state.idx = i; state.moves = 0; state.history = []; state.won = false; state.step = 0;
+  state.pos = {};
+  for (const v of lvl().vehicles) state.pos[v.id] = v.orientation === "H" ? v.x : v.y;
+  document.querySelectorAll("#levels li").forEach((li, k) => li.classList.toggle("active", k === i));
+  const act = document.querySelectorAll("#levels li")[i]; if (act) act.scrollIntoView({ block: "nearest" });
+  const e = cur();
+  $("#title").textContent = e.name || `Level ${i + 1}`;
+  const tags = [];
+  if (e.role) tags.push(`<span class="tag ${e.role}">${esc(e.role)}</span>`);
+  if (e.source) tags.push(`<span class="tag">${esc(e.source)}</span>`);
+  $("#sub").innerHTML = `${esc(e.mechanic || "")} ${tags.join(" ")}`;
+  $("#toast").textContent = "";
+  buildVehicles(); render(); renderPanels(); drawCurve();
+}
+function buildVehicles() {
+  const box = $("#vehicles"); box.innerHTML = "";
+  for (const v of lvl().vehicles) {
+    const d = document.createElement("div");
+    d.className = "veh " + (v.id === "R" ? "red" : v.length === 3 ? "truck" : "car");
+    d.textContent = v.id === "R" ? "R ➜" : v.id;
+    d.dataset.id = v.id;
+    d.setAttribute("aria-label", `${v.id === "R" ? "red car" : (v.length === 3 ? "truck " : "car ") + v.id}`);
+    d.addEventListener("pointerdown", onDown);
+    box.appendChild(d);
+  }
+  const er = exitRow();
+  const ex = $("#exit");
+  ex.style.top = `calc(3% + ${er} * 94% / ${H()} + 6px)`;
+  ex.style.height = `calc(94% / ${H()} - 12px)`;
+}
+function veh(id) { return lvl().vehicles.find(v => v.id === id); }
+function render() {
+  const w = W(), h = H(), pad = 4;
+  for (const el of document.querySelectorAll(".veh")) {
+    const v = veh(el.dataset.id); if (el.classList.contains("drag")) continue;
+    placeEl(el, v, state.pos[v.id], pad, w, h);
+  }
+  $("#counter").innerHTML = state.step
+    ? `Solution step <b>${state.step}</b> / ${(cur().solution || []).length}`
+    : `Moves <b>${state.moves}</b>` + (cur().metrics ? ` · optimal <b>${cur().metrics.min_moves}</b>` : "");
+  renderSolution();
+}
+function placeEl(el, v, p, pad, w = W(), h = H()) {
+  const x = v.orientation === "H" ? p : v.x, y = v.orientation === "V" ? p : v.y;
+  const cw = 100 / w, ch = 100 / h;
+  el.style.left = `calc(${x * cw}% + ${pad}px)`; el.style.top = `calc(${y * ch}% + ${pad}px)`;
+  el.style.width = `calc(${(v.orientation === "H" ? v.length : 1) * cw}% - ${2 * pad}px)`;
+  el.style.height = `calc(${(v.orientation === "V" ? v.length : 1) * ch}% - ${2 * pad}px)`;
+}
+
+/* ---------------- rules ---------------- */
+function occupied(exceptId) {
+  const occ = new Set();
+  for (const v of lvl().vehicles) {
+    if (v.id === exceptId) continue;
+    const p = state.pos[v.id];
+    for (let k = 0; k < v.length; k++) occ.add(v.orientation === "H" ? `${p + k},${v.y}` : `${v.x},${p + k}`);
+  }
+  return occ;
+}
+function range(v) {  // [min,max] slide positions given current board
+  const occ = occupied(v.id), p = state.pos[v.id];
+  const free = q => { for (let k = 0; k < v.length; k++) { const c = v.orientation === "H" ? `${q + k},${v.y}` : `${v.x},${q + k}`; if (occ.has(c)) return false; } return true; };
+  const max = (v.orientation === "H" ? W() : H()) - v.length;
+  let lo = p, hi = p;
+  while (lo - 1 >= 0 && free(lo - 1)) lo--;
+  while (hi + 1 <= max && free(hi + 1)) hi++;
+  return [lo, hi];
+}
+function applyMove(id, to, record = true) {
+  const from = state.pos[id];
+  if (from === to) return false;
+  state.pos[id] = to;
+  if (record) { state.history.push([id, from]); state.moves++; }
+  render(); checkWin();
+  return true;
+}
+function undo() {
+  if (state.anim || !state.history.length || state.won) return;
+  const [id, from] = state.history.pop(); state.pos[id] = from; state.moves--; render();
+}
+function checkWin() {
+  const r = veh("R");
+  if (state.pos.R === W() - r.length && !state.won) {
+    state.won = true;
+    const el = document.querySelector('.veh[data-id="R"]');
+    setTimeout(() => { el.style.left = `calc(${(W() + 0.5) * 100 / W()}% + 4px)`; el.classList.add("escaped"); }, 280);
+    const opt = cur().metrics?.min_moves;
+    const user = !state.anim && state.step === 0;
+    $("#toast").textContent = user ? (opt && state.moves <= opt ? `Solved in ${state.moves} — optimal! ★` : `Solved in ${state.moves} moves` + (opt ? ` (optimal ${opt})` : "")) : "Solution complete";
+    if (user) { state.solved.add(state.idx); markDone(); }
+  }
+}
+function markDone() {
+  document.querySelectorAll("#levels li").forEach((li, k) => {
+    const chip = li.querySelector(".chip");
+    if (state.solved.has(k) && !li.querySelector(".done")) chip.insertAdjacentHTML("beforebegin", '<span class="done" title="solved">✓</span>');
+  });
+}
+
+/* ---------------- drag (mouse + touch via pointer events) ---------------- */
+let drag = null;
+function onDown(e) {
+  if (state.won || state.anim) return;
+  const el = e.currentTarget, v = veh(el.dataset.id);
+  if (state.step) { select(state.idx); return; }  // leaving solution preview resets the board
+  const [lo, hi] = range(v);
+  const rect = $("#vehicles").getBoundingClientRect();
+  const cell = v.orientation === "H" ? rect.width / W() : rect.height / H();
+  drag = { el, v, lo, hi, cell, start: v.orientation === "H" ? e.clientX : e.clientY, p0: state.pos[v.id] };
+  el.setPointerCapture(e.pointerId); el.classList.add("drag");
+  el.addEventListener("pointermove", onMove); el.addEventListener("pointerup", onUp); el.addEventListener("pointercancel", onUp);
+}
+function onMove(e) {
+  if (!drag) return;
+  const d = ((drag.v.orientation === "H" ? e.clientX : e.clientY) - drag.start) / drag.cell;
+  const p = Math.max(drag.lo, Math.min(drag.hi, drag.p0 + d));
+  placeEl(drag.el, drag.v, p, 4);
+}
+function onUp(e) {
+  if (!drag) return;
+  const d = ((drag.v.orientation === "H" ? e.clientX : e.clientY) - drag.start) / drag.cell;
+  const p = Math.round(Math.max(drag.lo, Math.min(drag.hi, drag.p0 + d)));
+  const { el, v } = drag; drag = null;
+  el.classList.remove("drag");
+  el.removeEventListener("pointermove", onMove); el.removeEventListener("pointerup", onUp); el.removeEventListener("pointercancel", onUp);
+  if (!applyMove(v.id, p)) placeEl(el, v, state.pos[v.id], 4);
+}
+
+/* ---------------- solution animation ---------------- */
+function stepSolution(instant) {
+  const sol = cur().solution || [];
+  if (state.step === 0 && (state.moves || state.won)) { const i = state.idx; select(i); }
+  if (state.step >= sol.length) return false;
+  const m = sol[state.step++];
+  const els = document.querySelectorAll(".veh");
+  if (instant) els.forEach(el => el.style.transition = "none");
+  applyMove(m.id, m.to, false);
+  if (instant) { els.forEach(el => el.offsetWidth); els.forEach(el => el.style.transition = ""); }
+  renderSolution();
+  return state.step < sol.length;
+}
+function playSolution() {
+  const i = state.idx; select(i);
+  $("#playBtn").textContent = "■ Stop";
+  state.anim = setInterval(() => { if (!stepSolution(false)) { clearInterval(state.anim); state.anim = null; $("#playBtn").textContent = "▶ Show solution"; } }, 650);
+}
+function stopAnim() {
+  if (state.anim) { clearInterval(state.anim); state.anim = null; }
+  const b = $("#playBtn"); if (b) b.textContent = "▶ Show solution";
+}
+function renderSolution() {
+  const sol = cur().solution || [];
+  const arrow = { right: "→", left: "←", up: "↑", down: "↓" };
+  $("#solution").innerHTML = sol.length ? "Solution: " + sol.map((m, k) => `<span class="${k === state.step - 1 ? "cur" : ""}">${m.id}${arrow[m.dir]}${m.steps}</span>`).join(" ") : "";
+}
+
+/* ---------------- side panels ---------------- */
+function stat(k, v, sub = "", frac = null) {
+  return `<div class="stat"><div class="k">${k}</div><div class="v">${v}${sub ? ` <small>${sub}</small>` : ""}</div>${frac !== null ? `<div class="bar"><i style="width:${Math.round(Math.max(0, Math.min(1, frac)) * 100)}%"></i></div>` : ""}</div>`;
+}
+function renderPanels() {
+  const e = cur(), m = e.metrics, p = e.playtest;
+  $("#metrics").innerHTML = m ? [
+    stat("Difficulty", m.difficulty.toFixed(1), e.target_difficulty ? `target ${e.target_difficulty}` : "/ 10", m.difficulty / 10),
+    stat("Min moves", m.min_moves),
+    stat("Reachable states", m.reachable_states.toLocaleString()),
+    stat("Avg branching", m.avg_branching),
+    stat("Dead-end ratio", Math.round(m.dead_end_ratio * 100) + "%", "", m.dead_end_ratio),
+    stat("Blockers to move", m.blockers, `${m.direct_blockers} in lane`),
+    stat("Vehicles", m.vehicles, `${m.trucks} trucks`),
+  ].join("") : "<p>No metrics in this file.</p>";
+  $("#playtest").innerHTML = p ? [
+    stat("Win rate / attempt", Math.round(p.win_rate * 100) + "%", "", p.win_rate),
+    stat("First-try wins", Math.round(p.first_try_win_rate * 100) + "%", "", p.first_try_win_rate),
+    stat("Avg attempts", p.avg_attempts ?? "–", "to clear"),
+    stat("Churn risk", Math.round(p.churn_risk * 100) + "%", "fail all 5", p.churn_risk),
+  ].join("") + `<div class="k" style="grid-column:1/-1;font-size:11px;color:var(--ink-3)">${p.players} simulated players · move limit ${p.move_limit}</div>`
+    : `<p style="color:var(--ink-3);margin:0">No playtest data (run <code>jamlab.py pack</code>).</p>`;
+  const n = e.note || {};
+  $("#note").innerHTML = (n.why_it_works || n.what_it_teaches)
+    ? `<p><b>Why it works</b>${esc(n.why_it_works)}</p><p><b>What it teaches</b>${esc(n.what_it_teaches)}</p>`
+    : `<p>No note.</p>`;
+}
+
+/* ---------------- mini curve ---------------- */
+function drawCurve() {
+  const svg = $("#curve"); if (!svg || !state.pack) return;
+  const L = state.pack.levels, n = L.length;
+  const cs = getComputedStyle(document.documentElement);
+  const c = k => cs.getPropertyValue(k).trim();
+  const x0 = 24, x1 = 312, y0 = 10, y1 = 130;
+  const X = i => n === 1 ? (x0 + x1) / 2 : x0 + (x1 - x0) * i / (n - 1);
+  const Y = d => y1 - (y1 - y0) * (d / 10);
+  let s = "";
+  for (const g of [0, 5, 10]) s += `<line x1="${x0}" x2="${x1}" y1="${Y(g)}" y2="${Y(g)}" stroke="${c("--line")}" stroke-width="1"/><text x="${x0 - 6}" y="${Y(g) + 4}" font-size="10" text-anchor="end" fill="${c("--ink-3")}">${g}</text>`;
+  const tgt = L.map((e, i) => e.target_difficulty != null ? `${X(i)},${Y(e.target_difficulty)}` : null).filter(Boolean);
+  if (tgt.length > 1) s += `<polyline points="${tgt.join(" ")}" fill="none" stroke="${c("--target")}" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  const act = L.map((e, i) => e.metrics ? `${X(i)},${Y(e.metrics.difficulty)}` : null).filter(Boolean);
+  s += `<polyline points="${act.join(" ")}" fill="none" stroke="${c("--accent")}" stroke-width="2" stroke-linejoin="round"/>`;
+  L.forEach((e, i) => {
+    if (!e.metrics) return;
+    const on = i === state.idx;
+    s += `<circle class="pt" data-i="${i}" cx="${X(i)}" cy="${Y(e.metrics.difficulty)}" r="${on ? 6 : 4}" fill="${on ? c("--accent") : c("--surface")}" stroke="${c("--accent")}" stroke-width="2"/>`;
+    s += `<circle class="pt" data-i="${i}" cx="${X(i)}" cy="${Y(e.metrics.difficulty)}" r="10" fill="transparent"/>`;
+  });
+  s += `<text x="${x0}" y="146" font-size="10" fill="${c("--ink-3")}">1</text><text x="${x1}" y="146" font-size="10" text-anchor="end" fill="${c("--ink-3")}">${n}</text>`;
+  svg.innerHTML = s;
+  const tip = $("#tip");
+  svg.querySelectorAll(".pt").forEach(pt => {
+    const i = +pt.dataset.i, e = L[i];
+    pt.onclick = () => select(i);
+    pt.onmousemove = ev => {
+      tip.innerHTML = `${esc(e.name)}<br>difficulty ${e.metrics.difficulty}${e.target_difficulty != null ? ` (target ${e.target_difficulty})` : ""} · ${e.metrics.min_moves} moves${e.playtest ? ` · win ${Math.round(e.playtest.win_rate * 100)}%` : ""}`;
+      tip.style.left = ev.clientX + 12 + "px"; tip.style.top = ev.clientY + 12 + "px"; tip.style.opacity = 1;
+    };
+    pt.onmouseleave = () => tip.style.opacity = 0;
+  });
+}
+
+boot();
+</script>
+</body>
+</html>

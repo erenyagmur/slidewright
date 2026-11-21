@@ -1,0 +1,14 @@
+{
+  "name": "Example: chain of blockers",
+  "grid": {"width": 6, "height": 6},
+  "exit": {"row": 2, "side": "right"},
+  "vehicles": [
+    {"id": "R", "x": 0, "y": 2, "length": 2, "orientation": "H"},
+    {"id": "A", "x": 2, "y": 0, "length": 3, "orientation": "V"},
+    {"id": "F", "x": 3, "y": 0, "length": 3, "orientation": "H"},
+    {"id": "C", "x": 4, "y": 1, "length": 2, "orientation": "V"},
+    {"id": "B", "x": 3, "y": 3, "length": 3, "orientation": "V"},
+    {"id": "D", "x": 0, "y": 5, "length": 2, "orientation": "H"},
+    {"id": "E", "x": 4, "y": 5, "length": 2, "orientation": "H"}
+  ]
+}

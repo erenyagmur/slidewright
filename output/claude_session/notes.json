@@ -1,0 +1,8 @@
+{"notes": [
+ {"name": "Gatekeeper IIIb",
+  "why_it_works": "The exit lane holds two trucks, B and D, and both can only leave by dropping into the bottom rows, which truck H and car J are sitting on. H can only slide left once car F clears column 2, and F can only get out by going up through the red car's row. That forces the counter-intuitive opening: move the red car backwards to make room.",
+  "what_it_teaches": "Introduces trucks blocking the exit row, and the idea that the red car can be its own blocker. Players learn to read a dependency chain backwards from the exit (D needs the corner, the corner needs H, H needs F) instead of attacking the nearest obstacle."},
+ {"name": "Gatekeeper IVb",
+  "why_it_works": "Builds on IIIb with car K standing in the lane next to exit truck D. K can only leave downwards, so B, D and K all have to drop through the same bottom-right gap that H and J vacate. The left-side shuffle (C, E, F and the red car backing up) also gets one step longer, because C now has to drop all the way to the bottom.",
+  "what_it_teaches": "Ordering under pressure: clear the bottom rows once, then let three vehicles fall through in sequence. It's the harder follow-up to IIIb, so a player who has just learned that backing up the red car is allowed has to apply it again inside a longer chain."}
+]}

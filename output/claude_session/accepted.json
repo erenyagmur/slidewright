@@ -1,0 +1,407 @@
+[
+  {
+    "round": "round3",
+    "idea": "Gatekeeper II with A shrunk to a car and car M parked top-right, so truck B can only go down and the red car has to back up.",
+    "level": {
+      "name": "Gatekeeper IIIb",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "exit": {
+        "row": 2,
+        "side": "right"
+      },
+      "vehicles": [
+        {
+          "id": "R",
+          "x": 1,
+          "y": 2,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "A",
+          "x": 0,
+          "y": 0,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "B",
+          "x": 3,
+          "y": 0,
+          "length": 3,
+          "orientation": "V"
+        },
+        {
+          "id": "C",
+          "x": 0,
+          "y": 1,
+          "length": 2,
+          "orientation": "V"
+        },
+        {
+          "id": "D",
+          "x": 5,
+          "y": 1,
+          "length": 3,
+          "orientation": "V"
+        },
+        {
+          "id": "E",
+          "x": 0,
+          "y": 3,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "F",
+          "x": 2,
+          "y": 3,
+          "length": 2,
+          "orientation": "V"
+        },
+        {
+          "id": "H",
+          "x": 3,
+          "y": 4,
+          "length": 3,
+          "orientation": "H"
+        },
+        {
+          "id": "J",
+          "x": 4,
+          "y": 5,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "M",
+          "x": 4,
+          "y": 0,
+          "length": 2,
+          "orientation": "H"
+        }
+      ]
+    },
+    "metrics": {
+      "solvable": true,
+      "min_moves": 13,
+      "reachable_states": 6582,
+      "avg_branching": 10.77,
+      "dead_end_ratio": 0.36,
+      "blockers": 7,
+      "direct_blockers": 2,
+      "vehicles": 10,
+      "trucks": 3,
+      "difficulty": 6.1
+    },
+    "solution": [
+      {
+        "id": "F",
+        "from": 3,
+        "to": 4,
+        "dir": "down",
+        "steps": 1
+      },
+      {
+        "id": "E",
+        "from": 0,
+        "to": 3,
+        "dir": "right",
+        "steps": 3
+      },
+      {
+        "id": "C",
+        "from": 1,
+        "to": 3,
+        "dir": "down",
+        "steps": 2
+      },
+      {
+        "id": "R",
+        "from": 1,
+        "to": 0,
+        "dir": "left",
+        "steps": 1
+      },
+      {
+        "id": "F",
+        "from": 4,
+        "to": 0,
+        "dir": "up",
+        "steps": 4
+      },
+      {
+        "id": "R",
+        "from": 0,
+        "to": 1,
+        "dir": "right",
+        "steps": 1
+      },
+      {
+        "id": "C",
+        "from": 3,
+        "to": 2,
+        "dir": "up",
+        "steps": 1
+      },
+      {
+        "id": "E",
+        "from": 3,
+        "to": 1,
+        "dir": "left",
+        "steps": 2
+      },
+      {
+        "id": "H",
+        "from": 3,
+        "to": 0,
+        "dir": "left",
+        "steps": 3
+      },
+      {
+        "id": "J",
+        "from": 4,
+        "to": 1,
+        "dir": "left",
+        "steps": 3
+      },
+      {
+        "id": "B",
+        "from": 0,
+        "to": 3,
+        "dir": "down",
+        "steps": 3
+      },
+      {
+        "id": "D",
+        "from": 1,
+        "to": 3,
+        "dir": "down",
+        "steps": 2
+      },
+      {
+        "id": "R",
+        "from": 1,
+        "to": 4,
+        "dir": "right",
+        "steps": 3
+      }
+    ]
+  },
+  {
+    "round": "round4",
+    "idea": "Gatekeeper IIIb plus car K in the lane at x=4: it can only drop after trucks H and J have cleared the bottom rows.",
+    "level": {
+      "name": "Gatekeeper IVb",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "exit": {
+        "row": 2,
+        "side": "right"
+      },
+      "vehicles": [
+        {
+          "id": "R",
+          "x": 1,
+          "y": 2,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "A",
+          "x": 0,
+          "y": 0,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "B",
+          "x": 3,
+          "y": 0,
+          "length": 3,
+          "orientation": "V"
+        },
+        {
+          "id": "C",
+          "x": 0,
+          "y": 1,
+          "length": 2,
+          "orientation": "V"
+        },
+        {
+          "id": "D",
+          "x": 5,
+          "y": 1,
+          "length": 3,
+          "orientation": "V"
+        },
+        {
+          "id": "E",
+          "x": 0,
+          "y": 3,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "F",
+          "x": 2,
+          "y": 3,
+          "length": 2,
+          "orientation": "V"
+        },
+        {
+          "id": "H",
+          "x": 3,
+          "y": 4,
+          "length": 3,
+          "orientation": "H"
+        },
+        {
+          "id": "J",
+          "x": 4,
+          "y": 5,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "M",
+          "x": 4,
+          "y": 0,
+          "length": 2,
+          "orientation": "H"
+        },
+        {
+          "id": "K",
+          "x": 4,
+          "y": 2,
+          "length": 2,
+          "orientation": "V"
+        }
+      ]
+    },
+    "metrics": {
+      "solvable": true,
+      "min_moves": 15,
+      "reachable_states": 14635,
+      "avg_branching": 12.05,
+      "dead_end_ratio": 0.302,
+      "blockers": 8,
+      "direct_blockers": 3,
+      "vehicles": 11,
+      "trucks": 3,
+      "difficulty": 6.28
+    },
+    "solution": [
+      {
+        "id": "F",
+        "from": 3,
+        "to": 4,
+        "dir": "down",
+        "steps": 1
+      },
+      {
+        "id": "E",
+        "from": 0,
+        "to": 1,
+        "dir": "right",
+        "steps": 1
+      },
+      {
+        "id": "C",
+        "from": 1,
+        "to": 4,
+        "dir": "down",
+        "steps": 3
+      },
+      {
+        "id": "R",
+        "from": 1,
+        "to": 0,
+        "dir": "left",
+        "steps": 1
+      },
+      {
+        "id": "E",
+        "from": 1,
+        "to": 0,
+        "dir": "left",
+        "steps": 1
+      },
+      {
+        "id": "F",
+        "from": 4,
+        "to": 0,
+        "dir": "up",
+        "steps": 4
+      },
+      {
+        "id": "R",
+        "from": 0,
+        "to": 1,
+        "dir": "right",
+        "steps": 1
+      },
+      {
+        "id": "E",
+        "from": 0,
+        "to": 1,
+        "dir": "right",
+        "steps": 1
+      },
+      {
+        "id": "C",
+        "from": 4,
+        "to": 2,
+        "dir": "up",
+        "steps": 2
+      },
+      {
+        "id": "H",
+        "from": 3,
+        "to": 0,
+        "dir": "left",
+        "steps": 3
+      },
+      {
+        "id": "J",
+        "from": 4,
+        "to": 1,
+        "dir": "left",
+        "steps": 3
+      },
+      {
+        "id": "B",
+        "from": 0,
+        "to": 3,
+        "dir": "down",
+        "steps": 3
+      },
+      {
+        "id": "D",
+        "from": 1,
+        "to": 3,
+        "dir": "down",
+        "steps": 2
+      },
+      {
+        "id": "K",
+        "from": 2,
+        "to": 3,
+        "dir": "down",
+        "steps": 1
+      },
+      {
+        "id": "R",
+        "from": 1,
+        "to": 4,
+        "dir": "right",
+        "steps": 3
+      }
+    ]
+  }
+]

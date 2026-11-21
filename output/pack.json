@@ -1,0 +1,3624 @@
+{
+  "name": "Jam Lab Pack",
+  "created": "2026-11-17",
+  "seed": 2026,
+  "difficulty_weights": {
+    "min_moves": 0.4,
+    "blockers": 0.2,
+    "dead_end_ratio": 0.2,
+    "reachable_states": 0.1,
+    "congestion": 0.1
+  },
+  "playtest": {
+    "players": 200,
+    "max_attempts": 5
+  },
+  "levels": [
+    {
+      "index": 1,
+      "name": "01 · Rush Hour Basics",
+      "chapter": "Rush Hour Basics",
+      "mechanic": "Cars only: read the exit lane and clear it.",
+      "role": "intro",
+      "target_difficulty": 1.5,
+      "source": "procedural",
+      "level": {
+        "name": "01 · Rush Hour Basics",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 4,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "B",
+            "x": 4,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 1.05-1.95, moves 1-5, trucks 0-0, vehicles 3-7"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 1,
+        "reachable_states": 125,
+        "avg_branching": 12.0,
+        "dead_end_ratio": 0.0,
+        "blockers": 0,
+        "direct_blockers": 0,
+        "vehicles": 3,
+        "trucks": 0,
+        "difficulty": 1.4
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 11,
+        "win_rate": 1.0,
+        "first_try_win_rate": 1.0,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.0,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 1.9
+      },
+      "solution": [
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "01 · Rush Hour Basics",
+        "why_it_works": "1 moves with 0 vehicles that must move before the red car; 0 sit directly in the exit lane. About 0% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Read the exit lane and clear it directly: the opening move is R right."
+      }
+    },
+    {
+      "index": 2,
+      "name": "02 · Rush Hour Basics",
+      "chapter": "Rush Hour Basics",
+      "mechanic": "Cars only: read the exit lane and clear it.",
+      "role": "build",
+      "target_difficulty": 2.3,
+      "source": "procedural",
+      "level": {
+        "name": "02 · Rush Hour Basics",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 5,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 2,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 2,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 3,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 3,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 1.85-2.75, moves 1-6, trucks 0-0, vehicles 3-7"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 2,
+        "reachable_states": 4715,
+        "avg_branching": 13.62,
+        "dead_end_ratio": 0.171,
+        "blockers": 1,
+        "direct_blockers": 1,
+        "vehicles": 6,
+        "trucks": 0,
+        "difficulty": 2.61
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 12,
+        "win_rate": 0.99,
+        "first_try_win_rate": 0.99,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.01,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 3.3
+      },
+      "solution": [
+        {
+          "id": "D",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "02 · Rush Hour Basics",
+        "why_it_works": "2 moves with 1 vehicles that must move before the red car; 1 sit directly in the exit lane. About 17% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Read the exit lane and clear it directly: the opening move is D up."
+      }
+    },
+    {
+      "index": 3,
+      "name": "03 · Rush Hour Basics",
+      "chapter": "Rush Hour Basics",
+      "mechanic": "Cars only: read the exit lane and clear it.",
+      "role": "build",
+      "target_difficulty": 3.0,
+      "source": "procedural",
+      "level": {
+        "name": "03 · Rush Hour Basics",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 2,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "B",
+            "x": 4,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 3,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 1,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 5,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 2.55-3.45, moves 2-8, trucks 0-0, vehicles 3-7"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 3,
+        "reachable_states": 12540,
+        "avg_branching": 15.2,
+        "dead_end_ratio": 0.247,
+        "blockers": 2,
+        "direct_blockers": 2,
+        "vehicles": 7,
+        "trucks": 0,
+        "difficulty": 3.28
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 13,
+        "win_rate": 0.985,
+        "first_try_win_rate": 0.985,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.01,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 4.4
+      },
+      "solution": [
+        {
+          "id": "D",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "F",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "03 · Rush Hour Basics",
+        "why_it_works": "3 moves with 2 vehicles that must move before the red car; 2 sit directly in the exit lane. About 25% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Read the exit lane and clear it directly: the opening move is D up."
+      }
+    },
+    {
+      "index": 4,
+      "name": "04 · Rush Hour Basics",
+      "chapter": "Rush Hour Basics",
+      "mechanic": "Cars only: read the exit lane and clear it.",
+      "role": "peak",
+      "target_difficulty": 3.7,
+      "source": "procedural",
+      "level": {
+        "name": "04 · Rush Hour Basics",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 3,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 3,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 4,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 2,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 3.25-4.15, moves 3-11, trucks 0-0, vehicles 3-7"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 4,
+        "reachable_states": 1329,
+        "avg_branching": 11.63,
+        "dead_end_ratio": 0.19,
+        "blockers": 3,
+        "direct_blockers": 2,
+        "vehicles": 6,
+        "trucks": 0,
+        "difficulty": 3.35
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 14,
+        "win_rate": 0.985,
+        "first_try_win_rate": 0.99,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.01,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 5.5
+      },
+      "solution": [
+        {
+          "id": "C",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 2,
+          "to": 1,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "B",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "04 · Rush Hour Basics",
+        "why_it_works": "4 moves with 3 vehicles that must move before the red car; 2 sit directly in the exit lane. About 19% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is C up."
+      }
+    },
+    {
+      "index": 5,
+      "name": "05 · Heavy Load",
+      "chapter": "Heavy Load",
+      "mechanic": "Trucks appear: they need 3 free cells to clear a lane.",
+      "role": "breather",
+      "target_difficulty": 2.6,
+      "source": "procedural",
+      "level": {
+        "name": "05 · Heavy Load",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 2,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "B",
+            "x": 5,
+            "y": 1,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 0,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 4,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 2.15-3.05, moves 1-6, trucks 1-1, vehicles 5-9"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 3,
+        "reachable_states": 4789,
+        "avg_branching": 17.21,
+        "dead_end_ratio": 0.182,
+        "blockers": 2,
+        "direct_blockers": 2,
+        "vehicles": 6,
+        "trucks": 1,
+        "difficulty": 2.92
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 13,
+        "win_rate": 0.99,
+        "first_try_win_rate": 0.99,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.01,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 4.4
+      },
+      "solution": [
+        {
+          "id": "B",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "E",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "05 · Heavy Load",
+        "why_it_works": "3 moves with 2 vehicles that must move before the red car; 2 sit directly in the exit lane. About 18% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Read the exit lane and clear it directly: the opening move is B down. Features 1 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 6,
+      "name": "06 · Heavy Load",
+      "chapter": "Heavy Load",
+      "mechanic": "Trucks appear: they need 3 free cells to clear a lane.",
+      "role": "build",
+      "target_difficulty": 3.5,
+      "source": "procedural",
+      "level": {
+        "name": "06 · Heavy Load",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 2,
+            "y": 1,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "B",
+            "x": 2,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 1,
+            "y": 4,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 5,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 3.05-3.95, moves 3-11, trucks 1-1, vehicles 5-9"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 4,
+        "reachable_states": 650,
+        "avg_branching": 10.35,
+        "dead_end_ratio": 0.243,
+        "blockers": 3,
+        "direct_blockers": 2,
+        "vehicles": 5,
+        "trucks": 1,
+        "difficulty": 3.59
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 14,
+        "win_rate": 0.995,
+        "first_try_win_rate": 0.995,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.0,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 5.4
+      },
+      "solution": [
+        {
+          "id": "A",
+          "from": 2,
+          "to": 0,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "B",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "D",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "06 · Heavy Load",
+        "why_it_works": "4 moves with 3 vehicles that must move before the red car; 2 sit directly in the exit lane. About 24% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is A left. Features 1 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 7,
+      "name": "07 · Heavy Load",
+      "chapter": "Heavy Load",
+      "mechanic": "Trucks appear: they need 3 free cells to clear a lane.",
+      "role": "build",
+      "target_difficulty": 4.3,
+      "source": "procedural",
+      "level": {
+        "name": "07 · Heavy Load",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 2,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 1,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 4,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 1,
+            "y": 1,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 2,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "G",
+            "x": 1,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 3.85-4.75, moves 4-14, trucks 1-1, vehicles 5-9"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 5,
+        "reachable_states": 1584,
+        "avg_branching": 8.61,
+        "dead_end_ratio": 0.272,
+        "blockers": 4,
+        "direct_blockers": 2,
+        "vehicles": 8,
+        "trucks": 1,
+        "difficulty": 4.31
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 15,
+        "win_rate": 0.985,
+        "first_try_win_rate": 0.985,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.01,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 6.8
+      },
+      "solution": [
+        {
+          "id": "B",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "D",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "A",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "07 · Heavy Load",
+        "why_it_works": "5 moves with 4 vehicles that must move before the red car; 2 sit directly in the exit lane. About 27% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is B left. Features 1 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 8,
+      "name": "08 · Heavy Load",
+      "chapter": "Heavy Load",
+      "mechanic": "Trucks appear: they need 3 free cells to clear a lane.",
+      "role": "peak",
+      "target_difficulty": 5.1,
+      "source": "procedural",
+      "level": {
+        "name": "08 · Heavy Load",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 1,
+            "y": 3,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "B",
+            "x": 4,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 0,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 4,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 4,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 3,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 4.65-5.55, moves 6-17, trucks 1-1, vehicles 5-9"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 7,
+        "reachable_states": 5233,
+        "avg_branching": 12.4,
+        "dead_end_ratio": 0.301,
+        "blockers": 6,
+        "direct_blockers": 1,
+        "vehicles": 8,
+        "trucks": 1,
+        "difficulty": 4.75
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 17,
+        "win_rate": 0.935,
+        "first_try_win_rate": 0.935,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.07,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 10.1
+      },
+      "solution": [
+        {
+          "id": "R",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 3,
+          "to": 1,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 4,
+          "to": 0,
+          "dir": "up",
+          "steps": 4
+        },
+        {
+          "id": "D",
+          "from": 4,
+          "to": 2,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "B",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "08 · Heavy Load",
+        "why_it_works": "7 moves with 6 vehicles that must move before the red car; 1 sit directly in the exit lane. About 30% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is R right, and the red car repositions mid-solution. Features 1 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 9,
+      "name": "09 · Blocked Exit",
+      "chapter": "Blocked Exit",
+      "mechanic": "A vertical truck crosses the exit row and must be routed out.",
+      "role": "breather",
+      "target_difficulty": 3.9,
+      "source": "procedural",
+      "level": {
+        "name": "09 · Blocked Exit",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 2,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 0,
+            "y": 1,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 5,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 3,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 2,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "F",
+            "x": 4,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 3,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 3.45-4.35, moves 4-12, trucks 1-2, vehicles 7-11, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 6,
+        "reachable_states": 13603,
+        "avg_branching": 14.54,
+        "dead_end_ratio": 0.246,
+        "blockers": 5,
+        "direct_blockers": 4,
+        "vehicles": 8,
+        "trucks": 2,
+        "difficulty": 4.2
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 16,
+        "win_rate": 0.976,
+        "first_try_win_rate": 0.98,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.02,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 7.9
+      },
+      "solution": [
+        {
+          "id": "C",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "E",
+          "from": 2,
+          "to": 0,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "D",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "09 · Blocked Exit",
+        "why_it_works": "6 moves with 5 vehicles that must move before the red car; 4 sit directly in the exit lane. About 25% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is C down. Features 2 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 10,
+      "name": "10 · Blocked Exit",
+      "chapter": "Blocked Exit",
+      "mechanic": "A vertical truck crosses the exit row and must be routed out.",
+      "role": "build",
+      "target_difficulty": 4.8,
+      "source": "procedural",
+      "level": {
+        "name": "10 · Blocked Exit",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 5,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 1,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 3,
+            "y": 4,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 1,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 3,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "F",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 4,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 4.35-5.25, moves 5-15, trucks 1-2, vehicles 7-11, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 8,
+        "reachable_states": 14258,
+        "avg_branching": 16.78,
+        "dead_end_ratio": 0.177,
+        "blockers": 7,
+        "direct_blockers": 2,
+        "vehicles": 9,
+        "trucks": 2,
+        "difficulty": 4.56
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 18,
+        "win_rate": 0.84,
+        "first_try_win_rate": 0.88,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.19,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 11.3
+      },
+      "solution": [
+        {
+          "id": "E",
+          "from": 3,
+          "to": 2,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 3,
+          "to": 2,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 3,
+          "to": 2,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 4,
+          "to": 3,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "H",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "10 · Blocked Exit",
+        "why_it_works": "8 moves with 7 vehicles that must move before the red car; 2 sit directly in the exit lane. About 18% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is E left. Features 2 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 11,
+      "name": "11 · Blocked Exit",
+      "chapter": "Blocked Exit",
+      "mechanic": "A vertical truck crosses the exit row and must be routed out.",
+      "role": "build",
+      "target_difficulty": 5.6,
+      "source": "procedural",
+      "level": {
+        "name": "11 · Blocked Exit",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 5,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 0,
+            "y": 3,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 3,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 3,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 4,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 2,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 1,
+            "y": 1,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 0,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "I",
+            "x": 3,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "J",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 5.15-6.05, moves 7-20, trucks 1-2, vehicles 7-11, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 9,
+        "reachable_states": 26493,
+        "avg_branching": 12.68,
+        "dead_end_ratio": 0.255,
+        "blockers": 7,
+        "direct_blockers": 4,
+        "vehicles": 11,
+        "trucks": 2,
+        "difficulty": 5.2
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 19,
+        "win_rate": 0.901,
+        "first_try_win_rate": 0.915,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.11,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 12.3
+      },
+      "solution": [
+        {
+          "id": "A",
+          "from": 0,
+          "to": 1,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "F",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 3,
+          "to": 4,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "D",
+          "from": 4,
+          "to": 3,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 4,
+          "to": 3,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "A",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "11 · Blocked Exit",
+        "why_it_works": "9 moves with 7 vehicles that must move before the red car; 4 sit directly in the exit lane. About 26% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is A down. Features 2 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 12,
+      "name": "12 · Blocked Exit",
+      "chapter": "Blocked Exit",
+      "mechanic": "A vertical truck crosses the exit row and must be routed out.",
+      "role": "peak",
+      "target_difficulty": 6.4,
+      "source": "procedural",
+      "level": {
+        "name": "12 · Blocked Exit",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 4,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 1,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 3,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 0,
+            "y": 1,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 5,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "G",
+            "x": 1,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 3,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "I",
+            "x": 0,
+            "y": 3,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "J",
+            "x": 5,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 5.95-6.85, moves 8-23, trucks 1-2, vehicles 7-11, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 10,
+        "reachable_states": 6424,
+        "avg_branching": 11.92,
+        "dead_end_ratio": 0.424,
+        "blockers": 8,
+        "direct_blockers": 3,
+        "vehicles": 11,
+        "trucks": 2,
+        "difficulty": 6.01
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 20,
+        "win_rate": 0.645,
+        "first_try_win_rate": 0.75,
+        "clear_rate": 0.965,
+        "avg_attempts": 1.37,
+        "churn_risk": 0.035,
+        "avg_moves_when_won": 14.5
+      },
+      "solution": [
+        {
+          "id": "R",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 4,
+          "to": 2,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "H",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 3,
+          "to": 0,
+          "dir": "up",
+          "steps": 3
+        },
+        {
+          "id": "G",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 3,
+          "to": 2,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "J",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "12 · Blocked Exit",
+        "why_it_works": "10 moves with 8 vehicles that must move before the red car; 3 sit directly in the exit lane. About 42% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is R right, and the red car repositions mid-solution. Features 2 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 13,
+      "name": "13 · Gridlock",
+      "chapter": "Gridlock",
+      "mechanic": "Chains: the blockers are themselves blocked, often by trucks.",
+      "role": "breather",
+      "target_difficulty": 5.0,
+      "source": "procedural",
+      "level": {
+        "name": "13 · Gridlock",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 3,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "B",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 1,
+            "y": 5,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 1,
+            "y": 3,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 4,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 2,
+            "y": 0,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "G",
+            "x": 1,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 5,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "I",
+            "x": 3,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "J",
+            "x": 1,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 4.55-5.45, moves 6-17, trucks 2-3, vehicles 9-12"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 9,
+        "reachable_states": 4899,
+        "avg_branching": 9.91,
+        "dead_end_ratio": 0.301,
+        "blockers": 7,
+        "direct_blockers": 3,
+        "vehicles": 11,
+        "trucks": 3,
+        "difficulty": 5.45
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 19,
+        "win_rate": 0.787,
+        "first_try_win_rate": 0.82,
+        "clear_rate": 0.995,
+        "avg_attempts": 1.25,
+        "churn_risk": 0.005,
+        "avg_moves_when_won": 13.1
+      },
+      "solution": [
+        {
+          "id": "A",
+          "from": 3,
+          "to": 4,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "H",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 2,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 0,
+          "to": 1,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 2,
+          "to": 1,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 2,
+          "to": 4,
+          "dir": "right",
+          "steps": 2
+        }
+      ],
+      "note": {
+        "name": "13 · Gridlock",
+        "why_it_works": "9 moves with 7 vehicles that must move before the red car; 3 sit directly in the exit lane. About 30% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is A right, and the red car repositions mid-solution. Features 3 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 14,
+      "name": "14 · Gridlock",
+      "chapter": "Gridlock",
+      "mechanic": "Chains: the blockers are themselves blocked, often by trucks.",
+      "role": "build",
+      "target_difficulty": 6.0,
+      "source": "procedural",
+      "level": {
+        "name": "14 · Gridlock",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 2,
+            "y": 2,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 2,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 0,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 3,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 3,
+            "y": 0,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "F",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "G",
+            "x": 5,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "H",
+            "x": 2,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "I",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "J",
+            "x": 3,
+            "y": 1,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "K",
+            "x": 0,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 5.55-6.45, moves 7-21, trucks 2-3, vehicles 9-12"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 10,
+        "reachable_states": 163,
+        "avg_branching": 5.5,
+        "dead_end_ratio": 0.481,
+        "blockers": 7,
+        "direct_blockers": 2,
+        "vehicles": 12,
+        "trucks": 3,
+        "difficulty": 6.22
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 20,
+        "win_rate": 0.725,
+        "first_try_win_rate": 0.78,
+        "clear_rate": 0.99,
+        "avg_attempts": 1.33,
+        "churn_risk": 0.01,
+        "avg_moves_when_won": 13.7
+      },
+      "solution": [
+        {
+          "id": "B",
+          "from": 2,
+          "to": 0,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 3,
+          "to": 2,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 3,
+          "to": 4,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 3,
+          "dir": "right",
+          "steps": 3
+        },
+        {
+          "id": "H",
+          "from": 0,
+          "to": 1,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 3,
+          "to": 2,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 3,
+          "to": 4,
+          "dir": "right",
+          "steps": 1
+        }
+      ],
+      "note": {
+        "name": "14 · Gridlock",
+        "why_it_works": "10 moves with 7 vehicles that must move before the red car; 2 sit directly in the exit lane. About 48% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is B left, and the red car repositions mid-solution. Features 3 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 15,
+      "name": "15 · Gridlock",
+      "chapter": "Gridlock",
+      "mechanic": "Chains: the blockers are themselves blocked, often by trucks.",
+      "role": "build",
+      "target_difficulty": 6.8,
+      "source": "procedural",
+      "level": {
+        "name": "15 · Gridlock",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 2,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 0,
+            "y": 1,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 4,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 2,
+            "y": 0,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "F",
+            "x": 4,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "G",
+            "x": 2,
+            "y": 1,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 1,
+            "y": 5,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "I",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "J",
+            "x": 3,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "K",
+            "x": 5,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 6.35-7.25, moves 9-26, trucks 2-3, vehicles 9-12"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 14,
+        "reachable_states": 5653,
+        "avg_branching": 8.46,
+        "dead_end_ratio": 0.424,
+        "blockers": 9,
+        "direct_blockers": 1,
+        "vehicles": 12,
+        "trucks": 3,
+        "difficulty": 7.06
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 28,
+        "win_rate": 0.414,
+        "first_try_win_rate": 0.54,
+        "clear_rate": 0.87,
+        "avg_attempts": 1.67,
+        "churn_risk": 0.13,
+        "avg_moves_when_won": 21.6
+      },
+      "solution": [
+        {
+          "id": "R",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 2,
+          "to": 3,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "B",
+          "from": 3,
+          "to": 1,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "H",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 3,
+          "to": 2,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 4,
+          "to": 1,
+          "dir": "left",
+          "steps": 3
+        },
+        {
+          "id": "J",
+          "from": 2,
+          "to": 4,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "F",
+          "from": 4,
+          "to": 1,
+          "dir": "left",
+          "steps": 3
+        },
+        {
+          "id": "J",
+          "from": 4,
+          "to": 3,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 4,
+          "to": 3,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "K",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "E",
+          "from": 2,
+          "to": 3,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "B",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "15 · Gridlock",
+        "why_it_works": "14 moves with 9 vehicles that must move before the red car; 1 sit directly in the exit lane. About 42% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is R left, and the red car repositions mid-solution. Features 3 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 16,
+      "name": "16 · Gridlock",
+      "chapter": "Gridlock",
+      "mechanic": "Chains: the blockers are themselves blocked, often by trucks.",
+      "role": "peak",
+      "target_difficulty": 7.6,
+      "source": "procedural",
+      "level": {
+        "name": "16 · Gridlock",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "B",
+            "x": 2,
+            "y": 2,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 5,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 1,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "F",
+            "x": 0,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 2,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 4,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "I",
+            "x": 5,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "J",
+            "x": 2,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "K",
+            "x": 2,
+            "y": 1,
+            "length": 3,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 7.15-8.05, moves 12-32, trucks 2-3, vehicles 9-12"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 15,
+        "reachable_states": 21005,
+        "avg_branching": 12.19,
+        "dead_end_ratio": 0.433,
+        "blockers": 10,
+        "direct_blockers": 2,
+        "vehicles": 12,
+        "trucks": 2,
+        "difficulty": 7.15
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 30,
+        "win_rate": 0.397,
+        "first_try_win_rate": 0.585,
+        "clear_rate": 0.845,
+        "avg_attempts": 1.6,
+        "churn_risk": 0.155,
+        "avg_moves_when_won": 22.9
+      },
+      "solution": [
+        {
+          "id": "G",
+          "from": 2,
+          "to": 1,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 4,
+          "to": 3,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "H",
+          "from": 4,
+          "to": 3,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 2,
+          "to": 4,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "I",
+          "from": 0,
+          "to": 2,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "J",
+          "from": 2,
+          "to": 3,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "K",
+          "from": 2,
+          "to": 3,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "B",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "right",
+          "steps": 3
+        },
+        {
+          "id": "F",
+          "from": 4,
+          "to": 3,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "B",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "K",
+          "from": 3,
+          "to": 2,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "16 · Gridlock",
+        "why_it_works": "15 moves with 10 vehicles that must move before the red car; 2 sit directly in the exit lane. About 43% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is G left. Features 2 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 17,
+      "name": "17 · Rush Hour Master",
+      "chapter": "Rush Hour Master",
+      "mechanic": "Everything combined on jammed boards.",
+      "role": "breather",
+      "target_difficulty": 6.2,
+      "source": "procedural",
+      "level": {
+        "name": "17 · Rush Hour Master",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 2,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 4,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 4,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 0,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 1,
+            "y": 1,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 5,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 3,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 1,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "I",
+            "x": 2,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "J",
+            "x": 5,
+            "y": 2,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "K",
+            "x": 1,
+            "y": 3,
+            "length": 3,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 5.75-6.65, moves 7-21, trucks 2-4, vehicles 10-13, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 11,
+        "reachable_states": 697,
+        "avg_branching": 7.55,
+        "dead_end_ratio": 0.271,
+        "blockers": 10,
+        "direct_blockers": 2,
+        "vehicles": 12,
+        "trucks": 3,
+        "difficulty": 6.15
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 22,
+        "win_rate": 0.8,
+        "first_try_win_rate": 0.84,
+        "clear_rate": 1.0,
+        "avg_attempts": 1.25,
+        "churn_risk": 0.0,
+        "avg_moves_when_won": 15.6
+      },
+      "solution": [
+        {
+          "id": "F",
+          "from": 2,
+          "to": 1,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 4,
+          "to": 3,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 3,
+          "to": 2,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "H",
+          "from": 1,
+          "to": 2,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "K",
+          "from": 3,
+          "to": 2,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 2,
+          "to": 0,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "B",
+          "from": 4,
+          "to": 2,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "J",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 2,
+          "to": 4,
+          "dir": "right",
+          "steps": 2
+        }
+      ],
+      "note": {
+        "name": "17 · Rush Hour Master",
+        "why_it_works": "11 moves with 10 vehicles that must move before the red car; 2 sit directly in the exit lane. About 27% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is F up. Features 3 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 18,
+      "name": "18 · Rush Hour Master",
+      "chapter": "Rush Hour Master",
+      "mechanic": "Everything combined on jammed boards.",
+      "role": "build",
+      "target_difficulty": 7.2,
+      "source": "procedural",
+      "level": {
+        "name": "18 · Rush Hour Master",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 2,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 5,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 3,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 1,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "D",
+            "x": 3,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "E",
+            "x": 1,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 2,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 2,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 0,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "I",
+            "x": 0,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "J",
+            "x": 4,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "K",
+            "x": 4,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "L",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 6.75-7.65, moves 10-29, trucks 2-4, vehicles 10-13, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 11,
+        "reachable_states": 5129,
+        "avg_branching": 8.35,
+        "dead_end_ratio": 0.406,
+        "blockers": 10,
+        "direct_blockers": 2,
+        "vehicles": 13,
+        "trucks": 2,
+        "difficulty": 6.8
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 22,
+        "win_rate": 0.757,
+        "first_try_win_rate": 0.805,
+        "clear_rate": 0.995,
+        "avg_attempts": 1.3,
+        "churn_risk": 0.005,
+        "avg_moves_when_won": 15.8
+      },
+      "solution": [
+        {
+          "id": "E",
+          "from": 2,
+          "to": 1,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 4,
+          "to": 3,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "L",
+          "from": 2,
+          "to": 1,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 4,
+          "to": 3,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 3,
+          "to": 0,
+          "dir": "left",
+          "steps": 3
+        },
+        {
+          "id": "B",
+          "from": 3,
+          "to": 4,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 3,
+          "to": 4,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "K",
+          "from": 4,
+          "to": 2,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "J",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "R",
+          "from": 2,
+          "to": 4,
+          "dir": "right",
+          "steps": 2
+        }
+      ],
+      "note": {
+        "name": "18 · Rush Hour Master",
+        "why_it_works": "11 moves with 10 vehicles that must move before the red car; 2 sit directly in the exit lane. About 41% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is E up. Features 2 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 19,
+      "name": "19 · Rush Hour Master",
+      "chapter": "Rush Hour Master",
+      "mechanic": "Everything combined on jammed boards.",
+      "role": "build",
+      "target_difficulty": 8.0,
+      "source": "procedural",
+      "level": {
+        "name": "19 · Rush Hour Master",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 0,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 2,
+            "y": 0,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 4,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "C",
+            "x": 0,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 3,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 1,
+            "y": 3,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "F",
+            "x": 0,
+            "y": 3,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 0,
+            "y": 5,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 3,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "I",
+            "x": 5,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "J",
+            "x": 2,
+            "y": 4,
+            "length": 2,
+            "orientation": "H"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 7.55-8.45, moves 13-35, trucks 2-4, vehicles 10-13, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 22,
+        "reachable_states": 5306,
+        "avg_branching": 7.97,
+        "dead_end_ratio": 0.44,
+        "blockers": 8,
+        "direct_blockers": 3,
+        "vehicles": 11,
+        "trucks": 2,
+        "difficulty": 7.98
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 44,
+        "win_rate": 0.254,
+        "first_try_win_rate": 0.435,
+        "clear_rate": 0.69,
+        "avg_attempts": 1.69,
+        "churn_risk": 0.31,
+        "avg_moves_when_won": 36.1
+      },
+      "solution": [
+        {
+          "id": "G",
+          "from": 0,
+          "to": 3,
+          "dir": "right",
+          "steps": 3
+        },
+        {
+          "id": "F",
+          "from": 3,
+          "to": 4,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 2,
+          "to": 4,
+          "dir": "right",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "H",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 3,
+          "dir": "right",
+          "steps": 3
+        },
+        {
+          "id": "A",
+          "from": 3,
+          "to": 0,
+          "dir": "up",
+          "steps": 3
+        },
+        {
+          "id": "E",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 4,
+          "to": 1,
+          "dir": "up",
+          "steps": 3
+        },
+        {
+          "id": "E",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "C",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 3,
+          "to": 0,
+          "dir": "left",
+          "steps": 3
+        },
+        {
+          "id": "A",
+          "from": 3,
+          "to": 1,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "H",
+          "from": 3,
+          "to": 2,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 4,
+          "to": 0,
+          "dir": "left",
+          "steps": 4
+        },
+        {
+          "id": "A",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "H",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 2,
+          "to": 3,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 4,
+          "dir": "right",
+          "steps": 4
+        }
+      ],
+      "note": {
+        "name": "19 · Rush Hour Master",
+        "why_it_works": "22 moves with 8 vehicles that must move before the red car; 3 sit directly in the exit lane. About 44% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is G right, and the red car repositions mid-solution. Features 2 truck(s), which need 3 free cells to clear a lane."
+      }
+    },
+    {
+      "index": 20,
+      "name": "20 · Rush Hour Master",
+      "chapter": "Rush Hour Master",
+      "mechanic": "Everything combined on jammed boards.",
+      "role": "peak",
+      "target_difficulty": 8.8,
+      "source": "procedural",
+      "level": {
+        "name": "20 · Rush Hour Master",
+        "grid": {
+          "width": 6,
+          "height": 6
+        },
+        "exit": {
+          "row": 2,
+          "side": "right"
+        },
+        "vehicles": [
+          {
+            "id": "R",
+            "x": 2,
+            "y": 2,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "A",
+            "x": 4,
+            "y": 1,
+            "length": 3,
+            "orientation": "V"
+          },
+          {
+            "id": "B",
+            "x": 5,
+            "y": 4,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "C",
+            "x": 4,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "D",
+            "x": 2,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "E",
+            "x": 3,
+            "y": 0,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "F",
+            "x": 5,
+            "y": 2,
+            "length": 2,
+            "orientation": "V"
+          },
+          {
+            "id": "G",
+            "x": 0,
+            "y": 0,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "H",
+            "x": 0,
+            "y": 5,
+            "length": 2,
+            "orientation": "H"
+          },
+          {
+            "id": "I",
+            "x": 1,
+            "y": 3,
+            "length": 3,
+            "orientation": "H"
+          },
+          {
+            "id": "J",
+            "x": 0,
+            "y": 1,
+            "length": 3,
+            "orientation": "V"
+          }
+        ],
+        "meta": {
+          "source": "procedural",
+          "constraints": "difficulty 8.05-9.55, moves 16-42, trucks 2-4, vehicles 10-13, exit-row truck"
+        }
+      },
+      "metrics": {
+        "solvable": true,
+        "min_moves": 22,
+        "reachable_states": 3974,
+        "avg_branching": 8.24,
+        "dead_end_ratio": 0.432,
+        "blockers": 9,
+        "direct_blockers": 2,
+        "vehicles": 11,
+        "trucks": 3,
+        "difficulty": 8.06
+      },
+      "playtest": {
+        "players": 200,
+        "move_limit": 44,
+        "win_rate": 0.304,
+        "first_try_win_rate": 0.52,
+        "clear_rate": 0.755,
+        "avg_attempts": 1.66,
+        "churn_risk": 0.245,
+        "avg_moves_when_won": 34.1
+      },
+      "solution": [
+        {
+          "id": "H",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 2,
+          "to": 0,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "D",
+          "from": 0,
+          "to": 1,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 0,
+          "to": 1,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "C",
+          "from": 4,
+          "to": 2,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 1,
+          "to": 0,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "F",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "I",
+          "from": 1,
+          "to": 3,
+          "dir": "right",
+          "steps": 2
+        },
+        {
+          "id": "D",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 3,
+          "to": 2,
+          "dir": "up",
+          "steps": 1
+        },
+        {
+          "id": "H",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "D",
+          "from": 3,
+          "to": 4,
+          "dir": "down",
+          "steps": 1
+        },
+        {
+          "id": "I",
+          "from": 3,
+          "to": 1,
+          "dir": "left",
+          "steps": 2
+        },
+        {
+          "id": "A",
+          "from": 0,
+          "to": 3,
+          "dir": "down",
+          "steps": 3
+        },
+        {
+          "id": "C",
+          "from": 2,
+          "to": 3,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "G",
+          "from": 0,
+          "to": 1,
+          "dir": "right",
+          "steps": 1
+        },
+        {
+          "id": "J",
+          "from": 2,
+          "to": 0,
+          "dir": "up",
+          "steps": 2
+        },
+        {
+          "id": "I",
+          "from": 1,
+          "to": 0,
+          "dir": "left",
+          "steps": 1
+        },
+        {
+          "id": "E",
+          "from": 1,
+          "to": 3,
+          "dir": "down",
+          "steps": 2
+        },
+        {
+          "id": "R",
+          "from": 1,
+          "to": 4,
+          "dir": "right",
+          "steps": 3
+        }
+      ],
+      "note": {
+        "name": "20 · Rush Hour Master",
+        "why_it_works": "22 moves with 9 vehicles that must move before the red car; 2 sit directly in the exit lane. About 43% of the moves along the solution make it longer, so it rewards thinking before sliding.",
+        "what_it_teaches": "Clear the blockers of the blockers first: the opening move is H right, and the red car repositions mid-solution. Features 3 truck(s), which need 3 free cells to clear a lane."
+      }
+    }
+  ]
+}

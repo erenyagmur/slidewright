@@ -1,0 +1,4 @@
+anthropic>=2.9
+pydantic>=2
+matplotlib>=3.8
+pytest>=8
