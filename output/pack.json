@@ -1,5 +1,5 @@
 {
-  "name": "Jam Lab Pack",
+  "name": "Slidewright Pack",
   "created": "2026-11-17",
   "seed": 2026,
   "difficulty_weights": {
@@ -16,14 +16,14 @@
   "levels": [
     {
       "index": 1,
-      "name": "01 · Rush Hour Basics",
-      "chapter": "Rush Hour Basics",
+      "name": "01 · First Gear",
+      "chapter": "First Gear",
       "mechanic": "Cars only: read the exit lane and clear it.",
       "role": "intro",
       "target_difficulty": 1.5,
       "source": "procedural",
       "level": {
-        "name": "01 · Rush Hour Basics",
+        "name": "01 · First Gear",
         "grid": {
           "width": 6,
           "height": 6
@@ -92,21 +92,21 @@
         }
       ],
       "note": {
-        "name": "01 · Rush Hour Basics",
+        "name": "01 · First Gear",
         "why_it_works": "1 moves with 0 vehicles that must move before the red car; 0 sit directly in the exit lane. About 0% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Read the exit lane and clear it directly: the opening move is R right."
       }
     },
     {
       "index": 2,
-      "name": "02 · Rush Hour Basics",
-      "chapter": "Rush Hour Basics",
+      "name": "02 · First Gear",
+      "chapter": "First Gear",
       "mechanic": "Cars only: read the exit lane and clear it.",
       "role": "build",
       "target_difficulty": 2.3,
       "source": "procedural",
       "level": {
-        "name": "02 · Rush Hour Basics",
+        "name": "02 · First Gear",
         "grid": {
           "width": 6,
           "height": 6
@@ -203,21 +203,21 @@
         }
       ],
       "note": {
-        "name": "02 · Rush Hour Basics",
+        "name": "02 · First Gear",
         "why_it_works": "2 moves with 1 vehicles that must move before the red car; 1 sit directly in the exit lane. About 17% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Read the exit lane and clear it directly: the opening move is D up."
       }
     },
     {
       "index": 3,
-      "name": "03 · Rush Hour Basics",
-      "chapter": "Rush Hour Basics",
+      "name": "03 · First Gear",
+      "chapter": "First Gear",
       "mechanic": "Cars only: read the exit lane and clear it.",
       "role": "build",
       "target_difficulty": 3.0,
       "source": "procedural",
       "level": {
-        "name": "03 · Rush Hour Basics",
+        "name": "03 · First Gear",
         "grid": {
           "width": 6,
           "height": 6
@@ -328,21 +328,21 @@
         }
       ],
       "note": {
-        "name": "03 · Rush Hour Basics",
+        "name": "03 · First Gear",
         "why_it_works": "3 moves with 2 vehicles that must move before the red car; 2 sit directly in the exit lane. About 25% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Read the exit lane and clear it directly: the opening move is D up."
       }
     },
     {
       "index": 4,
-      "name": "04 · Rush Hour Basics",
-      "chapter": "Rush Hour Basics",
+      "name": "04 · First Gear",
+      "chapter": "First Gear",
       "mechanic": "Cars only: read the exit lane and clear it.",
       "role": "peak",
       "target_difficulty": 3.7,
       "source": "procedural",
       "level": {
-        "name": "04 · Rush Hour Basics",
+        "name": "04 · First Gear",
         "grid": {
           "width": 6,
           "height": 6
@@ -453,7 +453,7 @@
         }
       ],
       "note": {
-        "name": "04 · Rush Hour Basics",
+        "name": "04 · First Gear",
         "why_it_works": "4 moves with 3 vehicles that must move before the red car; 2 sit directly in the exit lane. About 19% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Clear the blockers of the blockers first: the opening move is C up."
       }
@@ -2611,14 +2611,14 @@
     },
     {
       "index": 17,
-      "name": "17 · Rush Hour Master",
-      "chapter": "Rush Hour Master",
+      "name": "17 · Final Lap",
+      "chapter": "Final Lap",
       "mechanic": "Everything combined on jammed boards.",
       "role": "breather",
       "target_difficulty": 6.2,
       "source": "procedural",
       "level": {
-        "name": "17 · Rush Hour Master",
+        "name": "17 · Final Lap",
         "grid": {
           "width": 6,
           "height": 6
@@ -2820,21 +2820,21 @@
         }
       ],
       "note": {
-        "name": "17 · Rush Hour Master",
+        "name": "17 · Final Lap",
         "why_it_works": "11 moves with 10 vehicles that must move before the red car; 2 sit directly in the exit lane. About 27% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Clear the blockers of the blockers first: the opening move is F up. Features 3 truck(s), which need 3 free cells to clear a lane."
       }
     },
     {
       "index": 18,
-      "name": "18 · Rush Hour Master",
-      "chapter": "Rush Hour Master",
+      "name": "18 · Final Lap",
+      "chapter": "Final Lap",
       "mechanic": "Everything combined on jammed boards.",
       "role": "build",
       "target_difficulty": 7.2,
       "source": "procedural",
       "level": {
-        "name": "18 · Rush Hour Master",
+        "name": "18 · Final Lap",
         "grid": {
           "width": 6,
           "height": 6
@@ -3043,21 +3043,21 @@
         }
       ],
       "note": {
-        "name": "18 · Rush Hour Master",
+        "name": "18 · Final Lap",
         "why_it_works": "11 moves with 10 vehicles that must move before the red car; 2 sit directly in the exit lane. About 41% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Clear the blockers of the blockers first: the opening move is E up. Features 2 truck(s), which need 3 free cells to clear a lane."
       }
     },
     {
       "index": 19,
-      "name": "19 · Rush Hour Master",
-      "chapter": "Rush Hour Master",
+      "name": "19 · Final Lap",
+      "chapter": "Final Lap",
       "mechanic": "Everything combined on jammed boards.",
       "role": "build",
       "target_difficulty": 8.0,
       "source": "procedural",
       "level": {
-        "name": "19 · Rush Hour Master",
+        "name": "19 · Final Lap",
         "grid": {
           "width": 6,
           "height": 6
@@ -3329,21 +3329,21 @@
         }
       ],
       "note": {
-        "name": "19 · Rush Hour Master",
+        "name": "19 · Final Lap",
         "why_it_works": "22 moves with 8 vehicles that must move before the red car; 3 sit directly in the exit lane. About 44% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Clear the blockers of the blockers first: the opening move is G right, and the red car repositions mid-solution. Features 2 truck(s), which need 3 free cells to clear a lane."
       }
     },
     {
       "index": 20,
-      "name": "20 · Rush Hour Master",
-      "chapter": "Rush Hour Master",
+      "name": "20 · Final Lap",
+      "chapter": "Final Lap",
       "mechanic": "Everything combined on jammed boards.",
       "role": "peak",
       "target_difficulty": 8.8,
       "source": "procedural",
       "level": {
-        "name": "20 · Rush Hour Master",
+        "name": "20 · Final Lap",
         "grid": {
           "width": 6,
           "height": 6
@@ -3615,7 +3615,7 @@
         }
       ],
       "note": {
-        "name": "20 · Rush Hour Master",
+        "name": "20 · Final Lap",
         "why_it_works": "22 moves with 9 vehicles that must move before the red car; 2 sit directly in the exit lane. About 43% of the moves along the solution make it longer, so it rewards thinking before sliding.",
         "what_it_teaches": "Clear the blockers of the blockers first: the opening move is H right, and the red car repositions mid-solution. Features 3 truck(s), which need 3 free cells to clear a lane."
       }

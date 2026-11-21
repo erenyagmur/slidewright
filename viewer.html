@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jam Lab Viewer</title>
+<title>Slidewright Viewer</title>
 <style>
 :root {
   color-scheme: light;
@@ -113,14 +113,14 @@ main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 340px; gap: 16
 </head>
 <body>
 <header>
-  <h1>Jam Lab</h1>
+  <h1>Slidewright</h1>
   <span class="pack" id="packName">no pack loaded</span>
   <span class="spacer"></span>
   <label class="btn">Load pack JSON<input type="file" id="file" accept=".json,application/json" hidden></label>
   <button id="themeBtn" title="Toggle light/dark">◐</button>
 </header>
 <main id="app">
-  <div id="empty">Loading… If nothing appears, run <code>python jamlab.py view</code> or drop a pack JSON (e.g. <code>output/pack.json</code>) onto this page.</div>
+  <div id="empty">Loading… If nothing appears, run <code>python slidewright.py view</code> or drop a pack JSON (e.g. <code>output/pack.json</code>) onto this page.</div>
 </main>
 <div id="drop">Drop a pack JSON to load it</div>
 <div id="tip"></div>
@@ -141,7 +141,7 @@ async function boot() {
     if (!r.ok) throw new Error(r.status);
     loadPack(await r.json(), src);
   } catch (e) {
-    $("#empty").innerHTML = `Couldn't fetch <code>${src}</code>. Click <b>Load pack JSON</b>, drop a file here, or serve the folder with <code>python jamlab.py view</code>.`;
+    $("#empty").innerHTML = `Couldn't fetch <code>${src}</code>. Click <b>Load pack JSON</b>, drop a file here, or serve the folder with <code>python slidewright.py view</code>.`;
   }
 }
 function loadPack(pack, label) {
@@ -406,7 +406,7 @@ function renderPanels() {
     stat("Avg attempts", p.avg_attempts ?? "–", "to clear"),
     stat("Churn risk", Math.round(p.churn_risk * 100) + "%", "fail all 5", p.churn_risk),
   ].join("") + `<div class="k" style="grid-column:1/-1;font-size:11px;color:var(--ink-3)">${p.players} simulated players · move limit ${p.move_limit}</div>`
-    : `<p style="color:var(--ink-3);margin:0">No playtest data (run <code>jamlab.py pack</code>).</p>`;
+    : `<p style="color:var(--ink-3);margin:0">No playtest data (run <code>slidewright.py pack</code>).</p>`;
   const n = e.note || {};
   $("#note").innerHTML = (n.why_it_works || n.what_it_teaches)
     ? `<p><b>Why it works</b>${esc(n.why_it_works)}</p><p><b>What it teaches</b>${esc(n.what_it_teaches)}</p>`

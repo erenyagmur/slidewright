@@ -3,7 +3,7 @@
 Coordinates are zero-based: x grows to the right, y grows downwards. The exit
 sits on the right edge of row ``exit_row`` (row 2 zero-based = "row 3" for a
 human). A *move* is sliding one vehicle any number of free cells along its axis
-(the standard Rush Hour "slide" metric), so ``min_moves`` matches what a player
+(the standard sliding-block "slide" metric), so ``min_moves`` matches what a player
 counts on screen.
 """
 from __future__ import annotations

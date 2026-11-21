@@ -1,12 +1,12 @@
-# Jam Lab
+# Slidewright
 
 **An AI-assisted level design tool for a mobile car-escape puzzle** (the sliding-block "get the red car out" genre).
 It generates 6×6 layouts with Claude or procedurally, proves each one is solvable, scores its difficulty from the
 structure of its state space, runs 200 simulated players on it, and assembles a 20-level pack along a designed
 difficulty curve. A single-file HTML viewer lets you play every level, read its numbers and watch the optimal solution.
 
-**▶ [Play the 20-level pack in your browser](https://erenyagmur.github.io/jam-lab/viewer.html)**, or see the
-[Claude design-session levels](https://erenyagmur.github.io/jam-lab/viewer.html?pack=output/claude_session/pack.json).
+**▶ [Play the 20-level pack in your browser](https://erenyagmur.github.io/slidewright/viewer.html)**, or see the
+[Claude design-session levels](https://erenyagmur.github.io/slidewright/viewer.html?pack=output/claude_session/pack.json).
 
 ![Viewer: level 16, solution step 6 of 15](docs/viewer_light.png)
 
@@ -14,9 +14,9 @@ difficulty curve. A single-file HTML viewer lets you play every level, read its 
 
 A live puzzle game ships levels every week, and its retention depends on getting the difficulty curve right: one
 spike that's too hard and players churn, one stretch that's too flat and they get bored. Live teams track **win
-rate, attempts per level and churn after a level** for exactly this reason. Jam Lab moves that loop *before* launch:
+rate, attempts per level and churn after a level** for exactly this reason. Slidewright moves that loop *before* launch:
 
-| Live-ops question | What Jam Lab gives you before shipping |
+| Live-ops question | What Slidewright gives you before shipping |
 |---|---|
 | Is the level even beatable? Is there a shortcut? | BFS solver: solvable yes/no, exact minimum moves, the optimal line |
 | How hard is it? | A 1–10 score from five structural metrics, with a published formula |
@@ -37,7 +37,7 @@ generator.py       procedural generator with constraints (difficulty, trucks, mo
 ai_generator.py    Claude pipeline: brief -> spec -> variants -> solver check -> feedback -> notes
 designer_session.py  the same validation loop driven by round files (no API key needed)
 pack_builder.py    20-level pack along a sawtooth curve + matplotlib chart
-jamlab.py          CLI
+slidewright.py          CLI
 viewer.html        single-file viewer: play, metrics, designer note, animated solution
 tests/             pytest: move rules, solver, metrics, playtest, generator, AI loop (mocked API)
 levels/            example level JSON
@@ -55,25 +55,25 @@ python -m pytest
 ```
 
 ```bash
-python jamlab.py pack --count 20
+python slidewright.py pack --count 20
 ```
 
 ```bash
-python jamlab.py view
+python slidewright.py view
 ```
 
 Other commands:
 
 ```bash
-python jamlab.py solve levels/example.json
-python jamlab.py analyze levels/example.json --playtest
-python jamlab.py random --difficulty 5-7 --trucks 1-2 --min-moves 10 --exit-truck --count 3
-python jamlab.py generate --brief "level 12, medium-hard, introduce trucks blocking the exit row, about 15 moves"
+python slidewright.py solve levels/example.json
+python slidewright.py analyze levels/example.json --playtest
+python slidewright.py random --difficulty 5-7 --trucks 1-2 --min-moves 10 --exit-truck --count 3
+python slidewright.py generate --brief "level 12, medium-hard, introduce trucks blocking the exit row, about 15 moves"
 ```
 
 Set `ANTHROPIC_API_KEY` to use Claude for `generate` and `pack` (`--mode ai|procedural|auto`, default `auto`).
 Without a key, both commands fall back to the procedural generator and template designer notes, so everything
-still runs. `viewer.html` loads `output/pack.json` when served (`jamlab.py view`); when you open it straight from disk,
+still runs. `viewer.html` loads `output/pack.json` when served (`slidewright.py view`); when you open it straight from disk,
 use **Load pack JSON** or drag a file onto the page.
 
 ## Game rules and level format
@@ -188,12 +188,12 @@ brief ─► Claude: spec (difficulty band, target moves, trucks, mechanic)     
 
 #### The same loop without an API key: a recorded design session
 `designer_session.py` runs the pipeline on files instead of API calls. Each round of proposed layouts is a JSON
-file. `jamlab.py check` runs **exactly the same `check_variant` / `feedback_text` code** the API path uses, then
-`jamlab.py finalize` adds playtests and designer notes:
+file. `slidewright.py check` runs **exactly the same `check_variant` / `feedback_text` code** the API path uses, then
+`slidewright.py finalize` adds playtests and designer notes:
 
 ```bash
-python jamlab.py check --session output/claude_session --variants output/claude_session/round1.json
-python jamlab.py finalize --session output/claude_session
+python slidewright.py check --session output/claude_session --variants output/claude_session/round1.json
+python slidewright.py finalize --session output/claude_session
 ```
 
 [`output/claude_session/`](output/claude_session/session_log.md) is a real session for the brief *"level 12,
@@ -222,11 +222,11 @@ breather after the previous chapter's peak:
 
 | Chapter | Mechanic introduced | Targets |
 |---|---|---|
-| Rush Hour Basics | cars only: read the exit lane | 1.5 → 3.7 |
+| First Gear | cars only: read the exit lane | 1.5 → 3.7 |
 | Heavy Load | trucks (need 3 free cells) | 2.6 → 5.1 |
 | Blocked Exit | a vertical truck crossing the exit row | 3.9 → 6.4 |
 | Gridlock | chains: blockers that are themselves blocked | 5.0 → 7.6 |
-| Rush Hour Master | everything, on jammed boards | 6.2 → 8.8 |
+| Final Lap | everything, on jammed boards | 6.2 → 8.8 |
 
 ![Difficulty curve](output/difficulty_curve.png)
 
@@ -249,7 +249,7 @@ designer would review those first, either by adding a breather or by softening t
 ## Example output
 
 ```
-$ python jamlab.py analyze levels/example.json --playtest
+$ python slidewright.py analyze levels/example.json --playtest
 ..AFFF
 ..A.C.
 RRA.C.  <- exit
@@ -271,7 +271,7 @@ DD.BEE
 ```
 
 ```
-$ python jamlab.py generate --brief "level 12, medium-hard, introduce trucks blocking the exit row, about 15 moves"
+$ python slidewright.py generate --brief "level 12, medium-hard, introduce trucks blocking the exit row, about 15 moves"
 [ai] ANTHROPIC_API_KEY is not set -> falling back to the procedural generator
 [procedural] constraints: difficulty 5.5-7.0, moves 12-18, trucks 1-3, vehicles 8-12, exit-row truck
 
@@ -286,12 +286,12 @@ solution: R→1 B→1 D←2 F↓2 G←2 A↑2 H→2 E→2 I↑3 C←1 E←2 H←
 ```
 
 ```
-$ python jamlab.py pack --count 20
-[pack] 01 · Rush Hour Basics        intro    target  1.5  got   1.4  moves  1  win 100%  churn 0%
+$ python slidewright.py pack --count 20
+[pack] 01 · First Gear              intro    target  1.5  got   1.4  moves  1  win 100%  churn 0%
 [pack] 05 · Heavy Load              breather target  2.6  got  2.92  moves  3  win 99%  churn 0%
 [pack] 12 · Blocked Exit            peak     target  6.4  got  6.01  moves 10  win 64%  churn 4%
 [pack] 16 · Gridlock                peak     target  7.6  got  7.15  moves 15  win 40%  churn 16%
-[pack] 19 · Rush Hour Master        build    target  8.0  got  7.98  moves 22  win 25%  churn 31%
+[pack] 19 · Final Lap               build    target  8.0  got  7.98  moves 22  win 25%  churn 31%
 ...
 ```
 

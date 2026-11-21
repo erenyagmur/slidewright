@@ -1,11 +1,11 @@
-"""Jam Lab command-line interface.
+"""Slidewright command-line interface.
 
-  python jamlab.py solve levels/example.json
-  python jamlab.py analyze levels/example.json --playtest
-  python jamlab.py random --difficulty 5-7 --trucks 1-2 --min-moves 10 --count 3
-  python jamlab.py generate --brief "level 12, medium-hard, introduce trucks blocking the exit row, about 15 moves"
-  python jamlab.py pack --count 20
-  python jamlab.py view
+  python slidewright.py solve levels/example.json
+  python slidewright.py analyze levels/example.json --playtest
+  python slidewright.py random --difficulty 5-7 --trucks 1-2 --min-moves 10 --count 3
+  python slidewright.py generate --brief "level 12, medium-hard, introduce trucks blocking the exit row, about 15 moves"
+  python slidewright.py pack --count 20
+  python slidewright.py view
 """
 from __future__ import annotations
 
@@ -139,7 +139,7 @@ def cmd_view(a):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="jamlab", description="AI-assisted level design for car-escape puzzles")
+    ap = argparse.ArgumentParser(prog="slidewright", description="AI-assisted level design for car-escape puzzles")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     s = sub.add_parser("solve", help="solve a level JSON")

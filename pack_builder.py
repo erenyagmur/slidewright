@@ -34,7 +34,7 @@ class Chapter:
 
 
 CHAPTERS = [
-    Chapter("Rush Hour Basics", "Cars only: read the exit lane and clear it.",
+    Chapter("First Gear", "Cars only: read the exit lane and clear it.",
             [1.5, 2.3, 3.0, 3.7], (0, 0), (3, 7)),
     Chapter("Heavy Load", "Trucks appear: they need 3 free cells to clear a lane.",
             [2.6, 3.5, 4.3, 5.1], (1, 1), (5, 9)),
@@ -42,7 +42,7 @@ CHAPTERS = [
             [3.9, 4.8, 5.6, 6.4], (1, 2), (7, 11), exit_truck=True),
     Chapter("Gridlock", "Chains: the blockers are themselves blocked, often by trucks.",
             [5.0, 6.0, 6.8, 7.6], (2, 3), (9, 12), min_blockers=6),
-    Chapter("Rush Hour Master", "Everything combined on jammed boards.",
+    Chapter("Final Lap", "Everything combined on jammed boards.",
             [6.2, 7.2, 8.0, 8.8], (2, 4), (10, 13), exit_truck=True, min_blockers=8),
 ]
 
@@ -149,7 +149,7 @@ def build_pack(count: int = 20, seed: int = 2026, mode: str = "auto", players: i
     for e, gl in zip(entries, generated):
         e["note"] = gl.note
     return {
-        "name": "Jam Lab Pack",
+        "name": "Slidewright Pack",
         "created": dt.date.today().isoformat(),
         "seed": seed,
         "difficulty_weights": WEIGHTS,
@@ -204,7 +204,7 @@ def plot_curve(pack: dict, path: str | Path) -> None:
     ax1.set_ylim(0, 10)
     ax1.set_ylabel("Difficulty score (1-10)")
     ax1.legend(loc="upper left", frameon=False, bbox_to_anchor=(0, 0.98))
-    fig.suptitle("Jam Lab pack: difficulty curve and simulated player outcomes", x=0.07, ha="left",
+    fig.suptitle("Slidewright pack: difficulty curve and simulated player outcomes", x=0.07, ha="left",
                  fontsize=13, color=ink, y=0.98)
 
     w = 0.38
