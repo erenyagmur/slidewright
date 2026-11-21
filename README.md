@@ -5,6 +5,9 @@ It generates 6×6 layouts with Claude or procedurally, proves each one is solvab
 structure of its state space, runs 200 simulated players on it, and assembles a 20-level pack along a designed
 difficulty curve. A single-file HTML viewer lets you play every level, read its numbers and watch the optimal solution.
 
+**▶ [Play the 20-level pack in your browser](https://erenyagmur.github.io/jam-lab/viewer.html)**, or see the
+[Claude design-session levels](https://erenyagmur.github.io/jam-lab/viewer.html?pack=output/claude_session/pack.json).
+
 ![Viewer: level 16, solution step 6 of 15](docs/viewer_light.png)
 
 ## Why this matters for a live puzzle game
